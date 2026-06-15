@@ -16,13 +16,13 @@ instance_id=$( aws ec2 run-instances \
 echo "Instnace_id =$instance_id"
 
 if [ $instance == "frontend" ] ; then
-    IP =$(aws ec2 describe-instances \
+    IP=$(aws ec2 describe-instances \
     --instance-ids $instance_id \
     --query "Reservations[*].Instances[*].PublicIpAddress" \
-    --output text )
+    --output text)
     R53_RECORD="$DOMAIN_NAME"
 else 
-    IP =$(aws ec2 describe-instances \
+    IP=$(aws ec2 describe-instances \
     --instance-ids $instance_id \
     --query "Reservations[*].Instances[*].PrivateIpAddress" \
     --output text)
