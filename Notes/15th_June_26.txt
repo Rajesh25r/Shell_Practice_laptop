@@ -1,0 +1,55 @@
+Shell Scripting:-
+=================
+
+Git hub setup
+
+git add <file-name>
+
+git commit -m "<message>"
+
+git push origin main
+
+git add . ; git commit -m "Hello World" ; git push origin main
+
+
+git pull
+
+aws configure --> configure access, seret key, region
+
+
+rajeshdevops.online
+
+DevOps321
+
+
+aws ec2 run-instances \
+    --image-id ami-0220d79f3f480ecf5 \
+    --instance-type t3.micro \
+    --security-groups common \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Test}]' \
+    --query 'Instances[0].InstanceId' \
+    --output text
+	
+	i-0d7e628b53fa93409
+
+aws ec2 describe-instances --instance-ids i-0d7e628b53fa93409
+
+
+aws ec2 describe-instances \
+    --instance-ids i-0d7e628b53fa93409 \
+    --query "Reservations[*].Instances[*].[PrivateIpAddress, PublicIpAddress]" \
+    --output text
+	
+aws ec2 describe-instances \
+    --instance-ids i-0d7e628b53fa93409 \
+    --query "Reservations[*].Instances[*].PrivateIpAddress" \
+    --output text
+	
+aws ec2 describe-instances \
+    --instance-ids i-0d7e628b53fa93409 \
+    --query "Reservations[*].Instances[*].PublicIpAddress" \
+    --output text
+	
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
+  --change-batch "file://$JSON_PAYLOAD"
