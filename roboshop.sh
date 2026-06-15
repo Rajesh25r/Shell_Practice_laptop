@@ -26,7 +26,7 @@ else
     --instance-ids $instance_id \
     --query "Reservations[*].Instances[*].PrivateIpAddress" \
     --output text)
-    R53_RECORD="$instance_id.$DOMAIN_NAME"
+    R53_RECORD="$instance.$DOMAIN_NAME"
 
 fi
 
